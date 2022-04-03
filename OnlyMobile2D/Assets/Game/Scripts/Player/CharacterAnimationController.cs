@@ -10,6 +10,7 @@ public static class CharacterMovementAnimationKeys
     public const string VerticalSpeed = "VerticalSpeed";
     public const string IsGrounded = "IsGrounded";
     public const string TriggerDead = "Dead";
+    public const string IsAttacking = "IsAttacking";
 }
 public static class EnemyAnimationKeys
 {
@@ -20,12 +21,24 @@ public class CharacterAnimationController : MonoBehaviour
 {
     protected Animator animator;
     protected CharacterMovement2D characterMovement;
+    private IDamageable damageable;
 
     protected virtual void Awake() 
     {
         animator = GetComponent<Animator>();
         characterMovement = GetComponent<CharacterMovement2D>();
+        damageable = GetComponent<IDamageable>();
+        damageable.OnDeath += OnDeath;
+
     }  
+    private void OnDestroy()
+    {
+        damageable.OnDeath -= OnDeath;
+    }
+    private void OnDeath()
+    {
+        animator.SetTrigger(CharacterMovementAnimationKeys.TriggerDead);
+    }
     protected virtual void Update()
     {
         animator.SetFloat(CharacterMovementAnimationKeys.HorizontalSpeed, characterMovement.CurrentVelocity.x / characterMovement.MaxGroundSpeed);

@@ -520,6 +520,7 @@ GameObject:
   - component: {fileID: 1212224763}
   - component: {fileID: 1212224764}
   - component: {fileID: 1212224762}
+  - component: {fileID: 1212224765}
   m_Layer: 0
   m_Name: Chomper
   m_TagString: Untagged
@@ -652,6 +653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b9b9ab8f2d8f14cb03da4db3d8e2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damager: {fileID: 2069281964}
 --- !u!114 &1212224759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -804,6 +806,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visionRange: 5.89
   visionAngle: 55
+--- !u!114 &1212224765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212224753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bee7678abc6fb8f4ab17df81ac3ac7f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1371044808
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,6 +936,78 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1400690479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1400690480}
+  - component: {fileID: 1400690482}
+  - component: {fileID: 1400690481}
+  m_Layer: 7
+  m_Name: Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1400690480
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400690479}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1763556789}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1400690481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400690479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac3982b48942b6c47adc424801da9eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damege: 10
+  attackTime: 0.2
+--- !u!61 &1400690482
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400690479}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.741748, y: 1.0652475}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.3493931, y: 2.0233088}
+  m_EdgeRadius: 0
 --- !u!1 &1763556787
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,7 +1079,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.7534883, y: 2.8325582}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1011,6 +1097,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 181321173}
+  - {fileID: 1400690480}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1086,6 +1173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab1462babdb08b74ab62a441ec100cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponObject: {fileID: 1400690479}
   cameraTarget: {fileID: 181321173}
   cameraTargetOffsetX: 2
   cameraTargetFlipSpeed: 5

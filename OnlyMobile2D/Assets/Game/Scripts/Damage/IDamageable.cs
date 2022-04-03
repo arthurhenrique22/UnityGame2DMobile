@@ -6,6 +6,6 @@ using UnityEngine;
 public interface IDamageable
 {
    void TakeDamage(int damage);
-   event Action DeathEvent;
-   bool IsDead {  get ;}
+   event Action OnDeath;
+   bool IsLive {  get ;}
 }

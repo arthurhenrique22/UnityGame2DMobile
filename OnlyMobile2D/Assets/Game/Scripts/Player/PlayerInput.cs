@@ -7,14 +7,13 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerInput : MonoBehaviour
 {
-
     private struct PlayerInputConstants
     {
         public const string Horizontal = "Horizontal";
         public const string Vertical = "Vertical";
         public const string Jump = "Jump";
+        public const string Attack = "Attack";
     }
-    // Start is called before the first frame update
     public Vector2 GetMovementInput()
     {
         //Input Teclado
@@ -39,23 +38,27 @@ public class PlayerInput : MonoBehaviour
     {
         bool isKeyboardButtonDown = Input.GetKey(KeyCode.Space);
         bool isMobileButtonDown = CrossPlatformInputManager.GetButton(PlayerInputConstants.Jump);
-
         return isKeyboardButtonDown || isMobileButtonDown;
     }
     public bool IsCrouchButtonDown()
     {
         bool isKeyboardButtonDown = Input.GetKeyDown(KeyCode.S);
-        bool isMobileButtonDown = CrossPlatformInputManager.GetAxisRaw(PlayerInputConstants.Vertical) <0;
-        
+        bool isMobileButtonDown = CrossPlatformInputManager.GetAxisRaw(PlayerInputConstants.Vertical) <0;        
         return isKeyboardButtonDown || isMobileButtonDown;
     }
 
     public bool IsCrouchButtonUp()
     {
         bool isKeyboardButtonDown = Input.GetKey(KeyCode.S) == false;
-        bool isMobileButtonDown = CrossPlatformInputManager.GetAxisRaw(PlayerInputConstants.Vertical) >= 0;
-        
+        bool isMobileButtonDown = CrossPlatformInputManager.GetAxisRaw(PlayerInputConstants.Vertical) >= 0;        
         return isKeyboardButtonDown && isMobileButtonDown;
+    }
+
+    public bool IsAttackButtonDown()
+    {
+        bool isKeyboardButtonDown = Input.GetKeyDown(KeyCode.K);
+        bool isMobileButtonDown = CrossPlatformInputManager.GetButtonDown(PlayerInputConstants.Attack);
+        return isKeyboardButtonDown || isMobileButtonDown;
     }
 
 }
